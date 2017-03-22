@@ -1,10 +1,10 @@
 import React from 'react'
-import {render} from 'react-dom'
+import styles from './styles/App.css'
 
 class App extends React.Component {
   render () {
     return (
-      <div>
+      <div className={styles.app}>
         Hi there! :)<br/>
         <a href="//github.com/martins-giberts">Find me on GitHub</a>
       </div>
@@ -12,4 +12,4 @@ class App extends React.Component {
   }
 }
 
-render(<App/>, document.getElementById('app'))
+export default App
