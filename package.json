@@ -22,13 +22,17 @@
     "react-hot-loader": "3.0.0-beta.6",
     "serve": "^5.0.4",
     "style-loader": "0.13.1",
+    "uglify-js": "^2.8.0",
+    "uglifyjs-webpack-plugin": "^0.3.1",
     "webpack-dev-server": "2.1.0-beta.0",
+    "webpack-merge": "^4.1.0",
     "webpack-validator": "^2.3.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --hot --inline",
+    "start": "webpack-dev-server --env=dev --hot --inline",
+    "start:prod": "webpack-dev-server --env=prod",
     "validate-webpack:dev": "webpack-validator webpack.config.js --env.dev",
-    "build": "webpack",
-    "build:dev": "webpack -d"
+    "build:dev": "webpack --env=dev --progress --profile --colors",
+    "build:prod": "webpack --env=prod --progress --profile --colors"
   }
 }
