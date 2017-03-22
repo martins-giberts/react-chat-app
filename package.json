@@ -1,0 +1,27 @@
+{
+  "name": "martins-giberts.github.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/martins-giberts/martins-giberts.github.io.git",
+  "author": "Martins Giberts <martins.giberts@gmail.com>",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "webpack": "2"
+  },
+  "dependencies": {
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "babel-core": "^6.4.1",
+    "babel-loader": "^6.4.1",
+    "path": "^0.12.7",
+    "serve": "^5.0.4",
+    "webpack-dev-server": "^2.4.1",
+    "webpack-validator": "^2.3.0"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --hot --inline",
+    "validate-webpack:dev": "webpack-validator webpack.config.js --env.dev"
+  }
+}
