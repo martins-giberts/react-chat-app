@@ -25,7 +25,7 @@ module.exports = function (env) {
                 warnings: false
             },
             comments: false
-        })
+        }),
     ]
   })
 }
