@@ -1,3 +1,4 @@
+var webpack = require('webpack')
 var {resolve} = require('path')
 
 var BUILD_DIR = resolve(__dirname, '../build')
@@ -13,7 +14,7 @@ module.exports = function (env) {
     output: {
       path: BUILD_DIR,
       publicPath: '/build/',
-      filename: 'app.js',
+      filename: '[name].js',
       sourceMapFilename: '[name].map'
     },
 
@@ -43,5 +44,18 @@ module.exports = function (env) {
         },
       ]
     },
+
+    plugins: [
+      new webpack.optimize.CommonsChunkPlugin({
+        name: "vendor",
+        minChunks: function(module){
+          return module.context && module.context.indexOf("node_modules") !== -1;
+        }
+      }),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: "manifest",
+        minChunks: Infinity
+      })
+    ]
   }
 }
