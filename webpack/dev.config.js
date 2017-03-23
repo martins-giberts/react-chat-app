@@ -10,6 +10,11 @@ module.exports = function (env) {
       'webpack/hot/only-dev-server',
     ],
 
+    output: {
+     filename: '[name].js',
+     sourceMapFilename: '[name].map'
+    },
+
     devtool: 'inline-source-map',
 
     devServer: {

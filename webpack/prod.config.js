@@ -3,7 +3,12 @@ const webpackMerge = require('webpack-merge')
 const commonConfig = require('./base.config.js')
 
 module.exports = function (env) {
-   return webpackMerge(commonConfig(), {
+  return webpackMerge(commonConfig(), {
+    output: {
+     filename: '[name].[chunkhash].js',
+     sourceMapFilename: '[name].[chunkhash].map'
+    },
+
     plugins: [
         new webpack.DefinePlugin({
           'process.env': {
