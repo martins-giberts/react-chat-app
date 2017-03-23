@@ -1,3 +1,5 @@
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 var webpack = require('webpack')
 var {resolve} = require('path')
 
@@ -14,8 +16,8 @@ module.exports = function (env) {
     output: {
       path: BUILD_DIR,
       publicPath: '/build/',
-      filename: '[name].js',
-      sourceMapFilename: '[name].map'
+      filename: '[name].[' + (env === 'prod' ? 'chunkhash' : 'hash') + '].js',
+      sourceMapFilename: '[name].[hash].map'
     },
 
     resolve: {
@@ -42,10 +44,20 @@ module.exports = function (env) {
             'postcss-loader',
           ],
         },
+        {
+          test: /\.html$/,
+          loaders: [
+            'html-loader'
+          ]
+        },
       ]
     },
 
     plugins: [
+      new HtmlWebpackPlugin({
+        template: resolve(__dirname, '../app/template.html'),
+        filename: resolve(__dirname, '../index.html'),
+      }),
       new webpack.optimize.CommonsChunkPlugin({
         name: "vendor",
         minChunks: function(module){
@@ -55,7 +67,8 @@ module.exports = function (env) {
       new webpack.optimize.CommonsChunkPlugin({
         name: "manifest",
         minChunks: Infinity
-      })
+      }),
+      new WebpackCleanupPlugin()
     ]
   }
 }
