@@ -24,8 +24,8 @@ body {
   padding: 0;
   color: $sorbert_on_fire;
   font-family: 'Open Sans', sans-serif;
-  font-size: 32px;
-  line-height: 32px;
+  font-size: 6vh;
+  line-height: 6vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,7 +37,7 @@ body {
   border-bottom: 40px solid $drift_in_dreams;
 }
 a {
-  font-size:18px;
+  font-size:3vh;
   color: $there_we_could_sail;
   text-decoration: none;
 }
@@ -45,8 +45,8 @@ a {
 .smile_emoticon {
   transform: rotate(90deg);
   display: inline-block;
-  padding:0 20px 10px;
-  font-size: 50px;
+  padding:0 3vw 1vh;
+  font-size: 7vh;
 }
 
 .app {
