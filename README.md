@@ -1,4 +1,4 @@
-# martins-giberts.github.io
+# martinsg.info (martins-giberts.github.io)
 My contact information page
 
 # How to start
