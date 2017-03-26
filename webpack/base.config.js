@@ -24,7 +24,7 @@ module.exports = function (env) {
       extensions: [".js", ".jsx", ".css"]
     },
 
-    context: resolve(__dirname, 'app'),
+    context: resolve(__dirname, '../app'),
 
     module: {
       loaders : [
