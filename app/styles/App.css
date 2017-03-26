@@ -22,9 +22,9 @@ body {
   background-color: $sea_showing_green;
   margin: 0;
   padding: 0;
-  color: $sorbert_on_fire;
+  color: $sunlit_sea;
   font-family: 'Open Sans', sans-serif;
-  font-size: 6vh;
+  font-size: 1em;
   line-height: 6vh;
   display: flex;
   justify-content: center;
@@ -36,8 +36,13 @@ body {
   border-right: 40px solid $drift_in_dreams;
   border-bottom: 40px solid $drift_in_dreams;
 }
+
+h1 {
+  margin-bottom: 0.5em;
+  font-size: 3em;
+}
+
 a {
-  font-size:3vh;
   color: $there_we_could_sail;
   text-decoration: none;
 }
@@ -45,8 +50,7 @@ a {
 .smile_emoticon {
   transform: rotate(90deg);
   display: inline-block;
-  padding:0 3vw 1vh;
-  font-size: 7vh;
+  padding:0;
 }
 
 .app {
