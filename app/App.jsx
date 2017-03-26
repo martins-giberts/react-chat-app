@@ -10,7 +10,7 @@ class App extends React.Component {
         </div>
 
         <div>
-          <a href="//github.com/martins-giberts">Find me on GitHub</a>
+          <a href="//github.com/martins-giberts/martins-giberts.github.io">Find me on GitHub</a>
         </div>
       </div>
     )
