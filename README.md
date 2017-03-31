@@ -3,7 +3,7 @@ Before we start: This is learning repo.
 
 By using basis of [martins-giberts.github.io repo](https://github.com/martins-giberts/martins-giberts.github.io) I am trying to make chat application using socket.io tutorial.
 
-#Prerequisites
+# Prerequisites
 - [node](https://nodejs.org/en/)
 - [yarn](https://yarnpkg.com/lang/en/)
 - `yarn global add webpack`
