@@ -6,8 +6,7 @@ const commonConfig = require('./base.config.js')
 module.exports = function (env) {
   return webpackMerge(commonConfig(), {
     entry: [
-      'webpack-dev-server/client?http://localhost:8080',
-      'webpack/hot/only-dev-server',
+      'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
     ],
 
     output: {
@@ -20,11 +19,12 @@ module.exports = function (env) {
     devServer: {
       hot: true,
       contentBase: resolve(__dirname, '../'),
-      publicPath: '/build/'
+      publicPath: '/build/',
     },
 
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
+      // new webpack.NoErrorsPlugin(),
       // new webpack.NamedModulesPlugin(), // TODO: see why its broken
     ]
   })

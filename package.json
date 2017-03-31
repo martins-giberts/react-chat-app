@@ -1,11 +1,12 @@
 {
-  "name": "martins-giberts.github.io",
+  "name": "react-socket.io-chat-app",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/martins-giberts/martins-giberts.github.io.git",
+  "repository": "https://github.com/martins-giberts/react-chat-app",
   "author": "Martins Giberts <martins.giberts@gmail.com>",
   "license": "GPL-3.0",
   "dependencies": {
+    "express": "^4.15.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   },
@@ -33,16 +34,18 @@
     "uglifyjs-webpack-plugin": "^0.3.1",
     "webpack": "^2.3.1",
     "webpack-cleanup-plugin": "^0.5.1",
+    "webpack-dev-middleware": "^1.10.1",
     "webpack-dev-server": "^2.4.2",
+    "webpack-hot-middleware": "^2.17.1",
     "webpack-merge": "^4.1.0",
     "webpack2-validator": "^1.0.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --env=dev --hot --inline",
-    "start:prod": "webpack-dev-server --env=prod",
     "eslint": "./node_modules/eslint/bin/eslint.js ./app",
     "validate-webpack:dev": "./node_modules/webpack2-validator/dist/bin/webpack-validator.js webpack.config.js --env=dev",
     "build:dev": "webpack --env=dev --progress --profile --colors",
-    "build:prod": "webpack --env=prod --progress --profile --colors"
+    "build:prod": "webpack --env=prod --progress --profile --colors",
+    "start": "yarn build:dev && NODE_ENV=dev node --preserve-symlinks server.js",
+    "start:prod": "yarn build:prod && NODE_ENV=prod node --preserve-symlinks server.js"
   }
 }

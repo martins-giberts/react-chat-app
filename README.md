@@ -1,15 +1,15 @@
-# martinsg.info (martins-giberts.github.io)
-My contact information page
+# React Socket.io chat app
+Before we start: This is learning repo.
+
+By using basis of [martins-giberts.github.io repo](https://github.com/martins-giberts/martins-giberts.github.io) I am trying to make chat application using socket.io tutorial.
+
+#Prerequisites
+- [node](https://nodejs.org/en/)
+- [yarn](https://yarnpkg.com/lang/en/)
+- `yarn global add webpack`
 
 # How to start
 - Clone repo
 - `Yarn`
 - `Yarn start`
-- Open `localhost:8080`
-
-# Build
-- `Yarn build:prod` - production build
-- `Yarn build:dev` - development build
-
-# Other info
-- Look for additional scripts in `packages.json`for linting and webpack config validation
+- Open `localhost:3000`
