@@ -1,22 +1,51 @@
 import React from 'react'
+import io from 'socket.io-client'
+import Messages from './components/messages'
+import Form from './components/form'
+import Message from './elements/message'
 import styles from './styles/App.css'
 
-import Link from './elements/link'
-
+const socket = io()
 class App extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      messages: [],
+    }
+  }
+
+  addMessage(message) {
+    this.setState((prevState) => {
+      return {messages: [...prevState.messages, message]}
+    })
+  }
+
+  renderMessages(messages) {
+    const list = []
+    for(let i = 0; i < messages.length; i++) {
+      list.push(<Message key={i} text={messages[i]} />)
+    }
+    return <Messages>{list}</Messages>
+  }
+
+  componentDidMount() {
+    const addMessage = this.addMessage.bind(this)
+    socket.on('chat message', function(message) {
+      addMessage(message)
+    })
+  }
+
+  onSubmit(e) {
+    e.preventDefault()
+    socket.emit('chat message', e.target.message.value)
+  }
+
   render () {
     return (
       <div className={styles.app}>
-        <h1>
-          <span className={[styles.text_sea_foaming, styles.smile_emoticon].join(' ')} >:)</span> <span className={styles.text_sunlit_sea} >Hi there!</span>
-        </h1>
-
-        <div>
-          <Link href="//github.com/martins-giberts/martins-giberts.github.io"><i className="fa fa-github" aria-hidden="true"></i></Link>
-          <Link href="https://www.linkedin.com/in/martinsgiberts/"><i className="fa fa-linkedin" aria-hidden="true"></i></Link>
-          <Link href="https://www.instagram.com/mgiberts/"><i className="fa fa-instagram" aria-hidden="true"></i></Link>
-          <Link href="https://www.facebook.com/mgiberts"><i className="fa fa-facebook" aria-hidden="true"></i></Link>
-        </div>
+        {this.renderMessages.bind(this)(this.state.messages)}
+        <Form onSubmit={this.onSubmit.bind(this)} />
       </div>
     )
   }

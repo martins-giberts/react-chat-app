@@ -1,59 +1,9 @@
-@import "colors";
-
-.text {
-  &_sunlit_sea {
-    color: $sunlit_sea;
-  }
-  &_sea_foaming {
-    color: $sea_foaming;
-  }
-  &_sea_showing_green {
-    color: $sea_showing_green;
-  }
-  &_there_we_could_sail {
-    color: $there_we_could_sail;
-  };
-  &_drift_in_dreams {
-    color: $drift_in_dreams;
-  }
-}
-
 body {
-  background-color: $sea_showing_green;
   margin: 0;
   padding: 0;
-  color: $sunlit_sea;
   font-family: 'Open Sans', sans-serif;
   font-size: 1em;
   line-height: 6vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
   box-sizing: border-box;
-  border-top: 40px solid $there_we_could_sail;
-  border-left: 40px solid $there_we_could_sail;
-  border-right: 40px solid $drift_in_dreams;
-  border-bottom: 40px solid $drift_in_dreams;
-}
-
-h1 {
-  margin-bottom: 0.5em;
-  font-size: 3em;
-}
-
-a {
-  color: $there_we_could_sail;
-  text-decoration: none;
-}
-
-.smile_emoticon {
-  transform: rotate(90deg);
-  display: inline-block;
-  padding:0;
-}
-
-.app {
-    flex-grow: 0;
-    text-align: center;
 }

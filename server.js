@@ -1,15 +1,21 @@
-var express = require('express')
-var http = require('http')
+var app = require('express')()
+var http = require('http').Server(app) // eslint-disable-line new-cap
+var io = require('socket.io')(http)
+
 var webpackDevMiddleware = require('webpack-dev-middleware')
 var webpackHotMiddleware = require('webpack-hot-middleware')
-var webpack = require('webpack')
 var webpackConfig = require('./webpack.config')
-
-var app = express()
-var compiler = webpack(webpackConfig(process.env.NODE_ENV))
+var compiler = require('webpack')(webpackConfig(process.env.NODE_ENV))
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
+})
+
+io.on('connection', function(socket){
+  console.log('Socket connected')
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg)
+  })
 })
 
 app.use(webpackDevMiddleware(compiler, {
@@ -26,7 +32,6 @@ app.use(webpackHotMiddleware(compiler, {
   heartbeat: 10 * 1000,
 }))
 
-var httpApp = http.Server(app) // eslint-disable-line new-cap
-httpApp.listen(3000, function () {
+http.listen(3000, function () {
   console.log('Listening on port 3000!')
 })
