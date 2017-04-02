@@ -1,14 +1,15 @@
 var app = require('express')()
 var http = require('http').Server(app) // eslint-disable-line new-cap
 var io = require('socket.io')(http)
-
+var {resolve} = require('path')
 var webpackDevMiddleware = require('webpack-dev-middleware')
 var webpackHotMiddleware = require('webpack-hot-middleware')
-var webpackConfig = require('./webpack.config')
+var webpackConfig = require('../webpack.config')
+
 var compiler = require('webpack')(webpackConfig(process.env.NODE_ENV))
 
 app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(resolve(__dirname, '../index.html'));
 })
 
 io.on('connection', function(socket){

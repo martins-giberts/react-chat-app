@@ -1,38 +1,27 @@
-import React from 'react'
 import io from 'socket.io-client'
-import Messages from './components/messages'
+import React from 'react'
 import Form from './components/form'
 import Message from './elements/message'
+import Messages from './components/messages'
 import styles from './styles/App.css'
 
+import {observer} from 'mobx-react'
+import chatStore from './models/chatStore'
+
 const socket = io()
+
+@observer
 class App extends React.Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      messages: [],
-    }
-  }
-
-  addMessage(message) {
-    this.setState((prevState) => {
-      return {messages: [...prevState.messages, message]}
+  renderMessages() {
+    const list = chatStore.messages.map((text, key) => {
+      return <Message key={key} text={text} />
     })
-  }
-
-  renderMessages(messages) {
-    const list = []
-    for(let i = 0; i < messages.length; i++) {
-      list.push(<Message key={i} text={messages[i]} />)
-    }
     return <Messages>{list}</Messages>
   }
 
   componentDidMount() {
-    const addMessage = this.addMessage.bind(this)
     socket.on('chat message', function(message) {
-      addMessage(message)
+      chatStore.addMessage(message)
     })
   }
 
@@ -44,8 +33,9 @@ class App extends React.Component {
   render () {
     return (
       <div className={styles.app}>
-        {this.renderMessages.bind(this)(this.state.messages)}
-        <Form onSubmit={this.onSubmit.bind(this)} />
+        <small>Current messages count: {chatStore.messagesCount}</small>
+        {this.renderMessages()}
+        <Form onSubmit={this.onSubmit} />
       </div>
     )
   }
