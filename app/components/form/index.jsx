@@ -1,16 +1,21 @@
-import React, {PropTypes} from 'react'
+import React, {Component, PropTypes} from 'react'
+import socket from '../../lib/clientSocket'
 import styles from './Form.css'
 
-const Form = ({
-  onSubmit,
-}) =>
-  <form onSubmit={onSubmit} className={styles.form}>
-    <input name='message' autoComplete={'off'} />
-    <button>Send</button>
-  </form>
+class Form extends Component {
+  onSubmit(e) {
+    e.preventDefault()
+    socket.emit('chat message', e.target.message.value)
+  }
 
-Form.propTypes = {
-  onSubmit: PropTypes.func,
+  render() {
+    return(
+      <form onSubmit={this.onSubmit} className={styles.form}>
+        <input name='message' autoComplete={'off'} />
+        <button>Send</button>
+      </form>
+    )
+  }
 }
 
 export default Form
