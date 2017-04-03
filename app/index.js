@@ -1,23 +1,23 @@
+import {AppContainer} from 'react-hot-loader'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { AppContainer } from 'react-hot-loader'
 
-import App from './App'
+import Routes from './Routes'
 
 const render = (Component) => {
     ReactDOM.render(
       <AppContainer>
-        <Component/>
+        <Component />
       </AppContainer>,
       document.getElementById('app')
     )
 }
 
-render(App)
+render(Routes)
 
 // Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./App', () => {
-    render(App)
+  module.hot.accept('./Routes', () => {
+    render(Routes)
   })
 }
