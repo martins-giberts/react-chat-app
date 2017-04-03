@@ -3,7 +3,6 @@ import App from './routes/App'
 import Chat from './routes/Chat'
 import Home from './routes/Home'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
-import styles from './styles/App.css'
 
 const Routes = () =>
   <Router>
