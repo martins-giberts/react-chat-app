@@ -1,5 +1,5 @@
 import {observer} from 'mobx-react'
-import React, {Component, PropTypes} from 'react'
+import React, {Component} from 'react'
 import chatStore from '../../models/chatStore'
 import Message from '../../elements/message'
 import socket from '../../lib/clientSocket'
