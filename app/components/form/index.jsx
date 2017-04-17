@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react'
+import React, {Component} from 'react'
 import socket from '../../lib/clientSocket'
 import styles from './Form.css'
 
