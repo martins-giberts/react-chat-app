@@ -10,6 +10,7 @@ By using basis of [martins-giberts.github.io repo](https://github.com/martins-gi
 - `yarn global add webpack`
 
 # How to start
+- When in main directory: `cp ./server/config.example.js ./server/config.js`
 - Clone `git clone https://github.com/martins-giberts/react-chat-app.git`
 - `Yarn`
 - `Yarn start`
