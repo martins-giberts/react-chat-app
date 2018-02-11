@@ -3,7 +3,13 @@ import React, {Component} from 'react'
 import chatStore from '../../models/chatStore'
 import Message from '../../elements/message'
 import socket from '../../lib/clientSocket'
-import styles from './Messages.css'
+import styled from 'styled-components'
+
+const MessagesCss = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+`
 
 @observer
 class Messages extends Component {
@@ -15,11 +21,11 @@ class Messages extends Component {
 
   render () {
     return(
-      <ul className={styles.messages}>
+      <MessagesCss>
         {chatStore.messages.map((text, key) => {
           return <Message key={key} text={text} />
         })}
-      </ul>
+      </MessagesCss>
     )
   }
 }

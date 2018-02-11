@@ -37,14 +37,6 @@ module.exports = function (env) {
           exclude: /node_modules/
         },
         {
-          test: /\.css$/,
-          loaders: [
-            'style-loader',
-            'css-loader?modules&localIdentName=[path]___[local]___[hash:base64:5]',
-            'postcss-loader',
-          ],
-        },
-        {
           test: /\.html$/,
           loaders: [
             'html-loader'

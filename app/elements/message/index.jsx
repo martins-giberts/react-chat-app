@@ -1,16 +1,19 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import styles from './Message.css'
+import styled from 'styled-components'
+
+const MessageCss = styled.li`
+  padding: 5px 10px;
+
+  &:nth-child(odd) {
+    background: #eee;
+  }
+`
 
 const Message = ({
   text,
 }) =>
-  <li className={styles.message}>
+  <MessageCss>
     {text}
-  </li>
-
-Message.propTypes = {
-  text: PropTypes.string,
-}
+  </MessageCss>
 
 export default Message
