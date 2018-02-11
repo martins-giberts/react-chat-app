@@ -1,16 +1,18 @@
-var webpackConfig = require('../webpack.config')
-var webpackDevMiddleware = require('webpack-dev-middleware')
-var webpackHotMiddleware = require('webpack-hot-middleware')
+const webpackConfig = require('../webpack.config')
+const webpackDevMiddleware = require('webpack-dev-middleware')
+const webpackHotMiddleware = require('webpack-hot-middleware')
 
 module.exports = function(app) {
-  var compiler = require('webpack')(webpackConfig(process.env.NODE_ENV))
+  const webpack = require('webpack')
+  const compiler = webpack(webpackConfig)
 
   app.use(webpackDevMiddleware(compiler, {
-    publicPath: '/build/',
+    host: '0.0.0.0',
     inline: true,
     hot: true,
-    stats: {colors: true},
-    historyApiFallback: true,
+    contentBase: false,
+    stats: 'errors-only',
+    compress: true
   }))
 
   app.use(webpackHotMiddleware(compiler, {

@@ -1,10 +1,10 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-var WebpackCleanupPlugin = require('webpack-cleanup-plugin')
+// var WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 var webpack = require('webpack')
 var {resolve} = require('path')
 
 var BUILD_DIR = resolve(__dirname, '../build')
-var APP_DIR = resolve(__dirname, '../app')
+var APP_DIR = resolve(__dirname, '../src')
 
 module.exports = function (env) {
   return {
@@ -24,7 +24,7 @@ module.exports = function (env) {
       extensions: [".js", ".jsx", ".css"]
     },
 
-    context: resolve(__dirname, '../app'),
+    context: resolve(__dirname, '../src'),
 
     module: {
       loaders : [
@@ -47,7 +47,7 @@ module.exports = function (env) {
 
     plugins: [
       new HtmlWebpackPlugin({
-        template: resolve(__dirname, '../app/template.html'),
+        template: resolve(__dirname, '../src/template.html'),
         filename: resolve(__dirname, '../index.html'),
       }),
       new webpack.optimize.CommonsChunkPlugin({
@@ -60,7 +60,7 @@ module.exports = function (env) {
         name: "manifest",
         minChunks: Infinity
       }),
-      new WebpackCleanupPlugin()
+      // new WebpackCleanupPlugin()
     ]
   }
 }
