@@ -2,8 +2,6 @@ var app = require('express')()
 var http = require('http').Server(app) // eslint-disable-line new-cap
 
 require('./static')(app)
-require('./session')(app)
-require('./passport')(app)
 require('./webpack')(app)
 require('./template')(app)
 require('./io')(http)
